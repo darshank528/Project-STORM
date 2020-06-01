@@ -17,19 +17,19 @@ So this paper here, addresses both of these issues. It presents a new algorithm 
 Before describing the algorithm in details, we briefly explore the connection between SGD with momentum and variance reduction.
 The stochastic gradient descent with momentum algorithm is typically implemented as
 
-|![comparison](file:///C:/Users/Darshan%20Khandelwal/OneDrive/Desktop/SGD%20with%20Momentum.webp)|
+![](https://github.com/darshank528/Project-STORM/blob/master/Images/SGD%20with%20Momentum.png)
 
 where a is small, i.e. a = 0.1. In words, instead of using the current gradient in the update of xt, we use an exponential average of the past observed gradients.
 
 However, this paper takes a different route. Instead of showing that momentum in SGD works not so great in giving accelerated rates, it shows that a variant of momentum can provably reduce the variance of the gradients. In its simplest form, the variant proposed is:
 
-|![comparison](file:///C:/Users/Darshan%20Khandelwal/OneDrive/Desktop/SGD%20with%20updated%20Momentum.png)|
+![](https://github.com/darshank528/Project-STORM/blob/master/Images/SGD%20with%20updated%20Momentum.png)
 
 The only difference is the addition of second term to the update. However, this update does not require to use the gradients calculated at any checkpoint points. Note that if x(t)~x(t-1), then the update becomes approximately the momentum one. These two terms will be similar as long as the algorithm is actually converging to some point, and **so we can expect the algorithm to behave exactly like the classic momentum SGD towards the end of the optimization process**.
 
 ## Implementation with PyTorch on ResNet-32 model architecture
 
-|![comparison](file:///C:/Users/Darshan%20Khandelwal/OneDrive/Desktop/Experiments.png)|
+![](https://github.com/darshank528/Project-STORM/blob/master/Images/Experiments.png)
 
 In order to confirm that the update as per the paper do indeed yield an algorithm that performs well and requires little tuning, we implemented STORM in PyTorch and tested its performance on the **CIFAR-10 image recognition benchmark** using a **ResNet-32 model**, also implemented in Pytorch as implemented in this [paper](https://arxiv.org/abs/1512.03385).
 
