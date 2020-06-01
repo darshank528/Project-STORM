@@ -17,7 +17,7 @@ So this paper here, addresses both of these issues. It presents a new algorithm 
 Before describing the algorithm in details, we briefly explore the connection between SGD with momentum and variance reduction.
 The stochastic gradient descent with momentum algorithm is typically implemented as
 
-|![comparison](file:///C:/Users/Darshan%20Khandelwal/OneDrive/Desktop/SGD%20with%20Momentum.png)|
+|![comparison](file:///C:/Users/Darshan%20Khandelwal/OneDrive/Desktop/SGD%20with%20Momentum.webp)|
 
 where a is small, i.e. a = 0.1. In words, instead of using the current gradient in the update of xt, we use an exponential average of the past observed gradients.
 
@@ -56,11 +56,11 @@ We compared Storm to AdaGrad and Adam, which are both very popular and successfu
 
 These results show that, while Storm is only **marginally better** than AdaGrad on test accuracy and not as better as Adam, though on both training loss and accuracy Storm appears to be somewhat faster in terms of number of iterations.
 
-## Inference and scope of improvements:
+## Inference and scope of improvement:
 - We get to learn about a new variance-reduction based algorithm, STORM, that finds critical points in stochastic, smooth, non-convex problems. This algorithm improves upon prior algorithms by virtue of removing the need for checkpoint gradients, and incorporating adaptive learning rates. These improvements mean that Storm is substantially easier to tune as compared to other optimizers.
 - This algorithm enjoys the same robustness to learning rate tuning as popular algorithms like AdaGrad or Adam. Storm obtains the optimal convergence guarantee, adapting to the level of noise in the problem without knowledge of this parameter. 
 - Storm indeed seems to be optimizing the objective in fewer iterations than baseline algorithms(verified on CIFAR-10 with a ResNet-32 architecture).
 - Storm's update formula is strikingly similar to the standard SGD with momentum heuristic employed in practice.
-- **SCOPE:** We note that the convergence proof given in the paper actually only applies to the training loss(since we are making multiple passes over the dataset). No **regularization** was employed in the above algorithm. It is possible that appropriate regularization can trade-off Storm's better training loss performance to obtain better test performance.
+- **SCOPE:** We note that the convergence proof given in the paper actually only applies to the training loss(since we are making multiple passes over the dataset). No **regularization** was employed in the above algorithm. It is possible that appropriate regularization can trade-off Storm's better training loss performance to obtain better test performance. Another thing we can say is that we have trained our model here only on 80 epochs as compared to 100k-300k epochs in the paper. So training longer could give us better training and test accuracy of our model.
 
 
