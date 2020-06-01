@@ -1,3 +1,5 @@
+# PROJECT STORM-(STOchastic Recursive Momentum)
+
 ## Introduction 
 
 Variance reduction has emerged in recent years as a strong competitor to stochastic gradient descent in non-convex problems, providing the first algorithms to improve upon the converge rate of stochastic gradient descent for finding first-order critical points. However, variance reduction techniques typically require carefully tuned learning rates and willingness to use excessively large mega-batches in order to achieve their improved results. This [paper](https://arxiv.org/abs/1905.10018) here presents a new algorithm, **Storm**, that does not require any batches and makes use of adaptive learning rates, enabling simpler implementation and less hyperparameter tuning. The technique for removing the batches uses a variant of momentum to achieve variance reduction in non-convex optimization. 
