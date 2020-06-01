@@ -25,11 +25,13 @@ However, this paper takes a different route. Instead of showing that momentum in
 
 ![](https://github.com/darshank528/Project-STORM/blob/master/Images/SGD%20with%20updated%20Momentum.png)
 
-The only difference is the addition of second term to the update. However, this update does not require to use the gradients calculated at any checkpoint points. Note that if x(t)~x(t-1), then the update becomes approximately the momentum one. These two terms will be similar as long as the algorithm is actually converging to some point, and **so we can expect the algorithm to behave exactly like the classic momentum SGD towards the end of the optimization process**.
+The only difference is the addition of second term to the update part. However, this update does not require to use the gradients calculated at any checkpoint points. Note that if x(t)~x(t-1), then the update becomes approximately the momentum one. These two terms will be similar as long as the algorithm is actually converging to some point, and **so we can expect the algorithm to behave exactly like the classic momentum SGD towards the end of the optimization process**.
 
 ## Implementation with PyTorch on ResNet-32 model architecture
 
-![](https://github.com/darshank528/Project-STORM/blob/master/Images/Experiments.png)
+|![](https://github.com/darshank528/Project-STORM/blob/master/Images/Experiments.png)|
+|:---:| 
+|  **RESULTS ON CIFAR-10** |
 
 In order to confirm that the update as per the paper do indeed yield an algorithm that performs well and requires little tuning, we implemented STORM in PyTorch and tested its performance on the **CIFAR-10 image recognition benchmark** using a **ResNet-32 model**, also implemented in Pytorch as implemented in this [paper](https://arxiv.org/abs/1512.03385).
 
@@ -54,7 +56,7 @@ We compared Storm to AdaGrad and Adam, which are both very popular and successfu
 
 ## Conclusion
 
-These results show that, while Storm is only **marginally better** than AdaGrad on test accuracy and not as better as Adam, though on both training loss and accuracy Storm appears to be somewhat faster in terms of number of iterations.
+These results show that, while Storm is only **marginally better** than AdaGrad on test accuracy and not as better as Adam, though on both training loss and training accuracy Storm appears to be somewhat faster in terms of number of iterations.
 
 ## Inference and scope of improvement:
 - We get to learn about a new variance-reduction based algorithm, STORM, that finds critical points in stochastic, smooth, non-convex problems. This algorithm improves upon prior algorithms by virtue of removing the need for checkpoint gradients, and incorporating adaptive learning rates. These improvements mean that Storm is substantially easier to tune as compared to other optimizers.
