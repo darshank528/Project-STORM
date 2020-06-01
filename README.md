@@ -1,4 +1,4 @@
-# PROJECT STORM-(STOchastic Recursive Momentum)
+# Project STORM-(STOchastic Recursive Momentum)
 
 ## Introduction 
 
